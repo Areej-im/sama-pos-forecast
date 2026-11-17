@@ -12,8 +12,6 @@ from . import config
 
 # Some sectors appear with two spellings in the source. Add to this map when you find more.
 SECTOR_ALIASES = {
-    "other": "Miscellaneous Goods and Services",
-    "others": "Miscellaneous Goods and Services",
     "miscellaneous goods & services": "Miscellaneous Goods and Services",
     "restaurants & cafes": "Restaurants and Cafes",
     "restaurants and café": "Restaurants and Cafes",
