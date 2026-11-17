@@ -1,0 +1,31 @@
+name: weekly-forecast
+
+on:
+  schedule:
+    - cron: "0 6 * * 2"   # every Tuesday 06:00 UTC (09:00 Riyadh)
+  workflow_dispatch:       # run by hand from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  forecast:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Download latest SAMA data
+        run: python scripts/download_data.py
+      - name: Grade last forecast and issue a new one
+        run: PYTHONPATH=src python -m posforecast.cli weekly
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/processed artifacts/forecasts.csv results
+          git diff --cached --quiet || git commit -m "weekly forecast $(date +%F)"
+          git push
