@@ -1,0 +1,4 @@
+data/raw
+.git
+__pycache__
+*.pkl
