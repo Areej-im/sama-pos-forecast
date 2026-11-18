@@ -2,7 +2,7 @@
 
 Every week SAMA publishes how much was spent through point-of-sale terminals in Saudi Arabia, by sector and by city. This project forecasts the next four weeks for each series, serves the forecast through an API and a dashboard, and includes a weekly job that grades past forecasts against new data.
 
-**Dashboard:** `<add link>` · **API docs:** `<add link>/docs`
+**Dashboard:** https://areej-sama-pos-forecast.streamlit.app · **API docs:** https://sama-pos-forecast.onrender.com/docs
 
 ## Data
 
